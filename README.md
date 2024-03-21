@@ -13,3 +13,8 @@
 ```
 ./gradlew distZip
 ```
+
+## Вход от имени администратора
+
+Логин: yurasemenov
+Пароль: admin
