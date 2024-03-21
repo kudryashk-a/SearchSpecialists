@@ -1,0 +1,34 @@
+{% extends "./layout.peb" %}
+
+{% block title %}
+    Поиск специалиста
+{% endblock %}
+
+{% block content %}
+
+<div class="grid-x grid-padding-x">
+    <div class="medium-12 cell">
+        <h2>Добро пожаловать!</h2>
+        <p>
+            Мы очень рады, что Вы зашли на наш сайт.
+        </p>
+        <p>
+            {{ model.s }}
+        </p>
+    </div>
+    <div class="medium-6 cell">
+        <h4>Для работодателя</h4>
+        <p>
+            Если Вам необходим какой-либо специалист из списка, то Вы можете позвонить по указанному им номеру.
+        </p>
+        <a href="/listofspecialists" class="button">Перейти к списку</a>
+    </div>
+    <div class="medium-6 cell">
+        <h4>Для специалиста</h4>
+        <p>
+            Если Вы являетесь специалистом, то Вы можете оставить заявку, и работодатель Вам позвонит.
+        </p>
+    </div>
+</div>
+
+{% endblock %}

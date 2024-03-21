@@ -1,0 +1,65 @@
+    {% extends "./layout.peb" %}
+
+        {% block title %}
+        Форма
+        {% endblock %}
+
+    {% block content %}
+
+    <form method="POST">
+        <div class="grid-x grid-padding-x">
+            <div class="medium-12 cell">
+                <label>Специалист:
+                    <input type="text" placeholder="Автомеханик" name="service"
+                           value="{{ model.form.fields["service"] | first }}"
+                    >
+                </label>
+            </div>
+            <div class="medium-12 cell">
+                <label>Категория специалиста:
+                    <input type="text" placeholder="Механик-диагност" name="category"
+                           value="{{ model.form.fields["category"] | first }}"
+                    >
+                </label>
+            </div>
+            <div class="medium-12 cell">
+                <label>Описание:
+                    <textarea name="description" placeholder="Диагностика, техническое обслуживание и ремонт всех видов автотранспорта" rows="3">{{ model.form.fields["description"] | first }}</textarea>
+                </label>
+            </div>
+            <div class="medium-12 cell">
+                <label>ФИО:
+                    <input type="text" placeholder="Петров Алексей Владимирович" name="name"
+                           value="{{ model.form.fields["name"] | first }}"
+                    >
+                </label>
+            </div>
+            <div class="medium-12 cell">
+                <label>Телефон в виде +7-***-***-**-**:
+                    <input type="tel" name="phone" placeholder="+7-976-524-09-12"
+                           value="{{ model.form.fields["phone"] | first }}"
+                    >
+                </label>
+            </div>
+            <div class="medium-12 cell">
+                <label>Образование:
+                    <textarea name="education" placeholder="Автомеханический колледж" rows="2">{{ model.form.fields["education"] | first }}</textarea>
+                </label>
+            </div>
+            <div class="medium-12 cell">
+                <input type="submit" value="Добавить специалиста" class="button">
+            </div>
+            <div class="medium-12 cell">
+                <p>Вернуться к
+                    <a href="/listofspecialists">списку специалистов</a>
+                </p>
+            </div>
+            <div class="medium-12 cell">
+                <p>Вернуться на
+                    <a href="/searchforaspecialist">главную страницу</a>
+                </p>
+            </div>
+        </div>
+    </form>
+
+    {% endblock %}

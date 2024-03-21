@@ -1,0 +1,44 @@
+    {% extends "./layout.peb" %}
+
+        {% block title %}
+        Вход в систему
+        {% endblock %}
+
+    {% block content %}
+
+        {% if model.form.errors is not empty %}
+        <div class="grid-x grid-padding-x">
+            <div class="medium-12 cell warning">
+                <ul>
+                        {% for error in model.form.errors %}
+                        <li><font color="red">{{ error }}</font></li>
+                        {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+    <form method="POST">
+        <div class="grid-x grid-padding-x">
+            <div class="medium-12 cell">
+                <label>Введите имя:
+                    <input name="name" type="text" value="{{ model.form.fields["name"] | first }}"></label>
+            </div>
+            <div class="medium-12 cell">
+                <label>Введите логин:
+                    <input name="login" type="text" value="{{ model.form.fields["login"] | first }}"></label>
+            </div>
+            <div class="medium-12 cell">
+                <label>Введите пароль:
+                    <input name="password1" type="password" value="{{ model.form.fields["password1"] | first }}"></label>
+            </div>
+            <div class="medium-12 cell">
+                <label>Введите пароль еще раз:
+                    <input name="password2" type="password" value="{{ model.form.fields["password2"] | first }}"></label>
+            </div>
+        </div>
+        <input type="submit" value="Зарегистрироваться" class="button">
+        <p>Вернуться к <a href="/">основному содержимому</a></p>
+    </form>
+
+    {% endblock %}

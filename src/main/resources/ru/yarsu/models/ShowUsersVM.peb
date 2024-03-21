@@ -1,0 +1,41 @@
+    {% extends "./layout.peb" %}
+
+        {% block title %}
+        Список пользователей
+        {% endblock %}
+
+    {% block content %}
+
+    <div class="gird-x grid-padding-x">
+        <div class="cell">
+            <h4>Список пользователей</h4>
+            {% if model.users is empty %}
+                <div class="callout warning">
+                    Нет ни одного пользователя
+                </div>
+                {% else %}
+                <table class="hover">
+                    <thead>
+                    <tr>
+                        <td>Имя пользователя</td>
+                        <td>Логин</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                            {% for user in model.users %}
+                        <tr>
+                            <td>
+                                    {{ user.name }}
+                            </td>
+                            <td>
+                                <a href="/users/{{ user.ID }}">{{ user.login }}</a>
+                            </td>
+                        </tr>
+                            {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+
+    {% endblock %}

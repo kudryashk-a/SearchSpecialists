@@ -1,0 +1,33 @@
+{% extends "./layout.peb" %}
+
+{% block title %}
+    Подробная информация
+{% endblock %}
+
+{% block content %}
+
+<div class="grid-x grid-padding-x">
+    <div class="medium-12 cell">
+    <h2>{{ model.advert.advertisementWithoutDate.service }}</h2>
+    <h3>{{ model.advert.advertisementWithoutDate.category }}</h3>
+    <p>Описание: {{ model.advert.advertisementWithoutDate.description }}</p>
+    <p>ФИО: {{ model.advert.advertisementWithoutDate.name }}</p>
+    <p>Номер телефона: {{ model.advert.advertisementWithoutDate.phone }}</p>
+    <p>Образование: {{ model.advert.advertisementWithoutDate.education }}</p>
+    <p>Дата и время: {{ model.advert.datetime }}</p>
+    <p>
+       <a href="/edit/page={{ model.index }}">Редактировать</a>
+    </p>
+    <p>
+        <a href="/delete/page={{ model.index }}">Удалить</a>
+    </p>
+    <p>Вернуться к
+        <a href="/listofspecialists">списку специалистов</a>
+    </p>
+    <p>Вернуться на
+        <a href="/searchforaspecialist">главную страницу</a>
+    </p>
+    </div>
+</div>
+
+{% endblock %}

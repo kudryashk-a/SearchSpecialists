@@ -1,0 +1,65 @@
+{% extends "./layout.peb" %}
+
+{% block title %}
+    Список специалистов
+{% endblock %}
+
+{% block content %}
+    <br>
+    <form action="/listofspecialists">
+        <div class="grid-x grid-padding-x">
+            <div class="medium-2 cell">
+                <label>Записей на странице:</label>
+            </div>
+            <div class="medium-2 cell">
+                <input type="number" value="{{ model.pages.countString }}" name="records" min=0 max=5000>
+            </div>
+            <div class="medium-5 cell">
+                {% for i in model.pages.listPrevPage() %}
+                    <input type="submit" name="page" value="{{ i.key }}">
+                {% endfor %}
+                {{ model.pages.numberPage }}
+                {% for i in model.pages.listNextPage() %}
+                    <input type="submit" name="page" value="{{ i.key }}">
+                {% endfor %}
+            </div>
+            <div class="medium-2 cell">
+                <label>Номер страницы:</label>
+            </div>
+            <div class="medium-1 cell">
+                <select name="page" value="{{ model.pages.numberPage }}">
+                        {% for i in range(0, model.pages.countPage) %}
+                        <option>{{ i }}</option>
+                        {% endfor %}
+                </select>
+                <input type="submit" value="ОК">
+            </div>
+        </div>
+    </form>
+
+<div class="grid-x grid-padding-x">
+    <div class="medium-12 cell">
+        <h3>Список специалистов</h3>
+        <p>
+            <a href="/add/page={{ model.number }}">Добавить нового специалиста</a>
+        </p>
+    </div>
+
+    {% for specialist in model.specialists %}
+        <div class="medium-12 cell">
+            <div class="callout">
+                <h4>{{ specialist.advertisementWithoutDate.service }}</h4>
+                <h5>{{ specialist.advertisementWithoutDate.category }}</h5>
+                <p>ФИО: {{ specialist.advertisementWithoutDate.name }}</p>
+                <p>Телефон: {{ specialist.advertisementWithoutDate.phone }}</p>
+                <p>Дата добавления: {{ specialist.datetime }}</p>
+                <p>
+                    <a href="/specialists/page={{ specialist.ID }}">Детальная информация</a>
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
